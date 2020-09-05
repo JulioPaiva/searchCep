@@ -4,14 +4,21 @@
   "description": "API responsável por retornar um Json com os dados { RUA, BAIRRO, CIDADE e ESTADO } ao ser informado um CEP.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint src/** test/** --fix"
+    "test": "jest",
+    "lint": "eslint src/** test/** --fix",
+    "start": "nodemon ./src/server.js",
+    "secure-mode": "jest --watch"
   },
   "author": "Júlio Paiva [juliopaiva.ti@gmail.com]",
   "license": "ISC",
   "devDependencies": {
     "eslint": "5.10.0",
     "eslint-config-airbnb-base": "13.1.0",
-    "eslint-plugin-import": "2.14.0"
+    "eslint-plugin-import": "2.14.0",
+    "jest": "23.6.0",
+    "supertest": "3.3.0"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }
