@@ -1,5 +1,11 @@
-const app = require('express')();
+const app = require('express')(), 
+      consign = require('consign'),
+      bodyParser = require('body-parser');
 
-app.get('/', (req, res) => res.status(200).send(new Date()));
+app.use(bodyParser.json());
+
+consign({ cwd: 'src', verbose: false })
+    .then('./routes')
+    .into(app);
 
 module.exports = app;
