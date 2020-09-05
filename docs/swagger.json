@@ -69,7 +69,7 @@
           {
             "name": "cep",
             "in": "formData",
-            "description": "CEP deve conter 8 caracteres. Caracteres especiais são opcionais.",
+            "description": "CEP deve conter 8 caracteres.",
             "required": true,
             "type": "string"
           }

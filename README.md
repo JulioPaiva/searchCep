@@ -16,7 +16,7 @@ O CEP é convertido para string e validado se possui 8 caracteres. Caracteres es
 * npm 6.4.1
 
 ## Porque NODE JS?
-Foi escolhida está plataforma por ter mais destreza e conhecimento. Quando comecei a programar me deparei com diversos conceitos e tecnologias que deveria aprender (HTML, CSS, JavaScript e uma linguagem back-end). Como iria aprender JavaScript optei por manter a mesma linguagem no back-end com o NODE JS. Fiquei curioso sobre como rodar uma aplicação 
+Escolhi está plataforma por ter mais destreza e conhecimento. Quando comecei a programar me deparei com diversos conceitos e tecnologias que deveria aprender (HTML, CSS, JavaScript e uma linguagem back-end). Como iria aprender JavaScript optei por manter a mesma linguagem no back-end com o NODE JS. Fiquei curioso sobre como rodar uma aplicação 
 completa utilizando JavaScript, achei incrível utilizar JSON em tudo, e a facilidade de iniciar uma aplicação. A paixão pelo NODE ainda continua, e busco sempre evoluir e conhecer mais esta plataforma :)
 
 ## Arquitetura e Padrões
@@ -24,6 +24,7 @@ A estrutura do projeto foi pensada no padrão MVC, porém como não temos conex�
 A pasta service do projeto faz o papel do controller, recebendo e retornando as requisições. 
 O projeto está separado em módulos: 
 - Test
+- Docs
 - Src
     1. Routes
     2. Services
