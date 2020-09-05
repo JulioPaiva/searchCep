@@ -4,7 +4,7 @@
   "description": "API responsável por retornar um Json com os dados { RUA, BAIRRO, CIDADE e ESTADO } ao ser informado um CEP.",
   "main": "app.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
     "lint": "eslint src/** test/** --fix",
     "start": "nodemon ./src/server.js",
     "secure-mode": "jest --watch"

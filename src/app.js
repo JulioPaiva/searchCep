@@ -5,7 +5,8 @@ const app = require('express')(),
 app.use(bodyParser.json());
 
 consign({ cwd: 'src', verbose: false })
-    .then('./routes')
+    .then('./services')
+    .then('./routes')    
     .into(app);
 
 module.exports = app;

@@ -1,10 +1,22 @@
-const controller = require('../controllers/cep'); 
+const controller = require('../services/cep'); 
 module.exports = (app) => {
-    app.post('/cep', async (req, res) => {    
-        let cep = req.body.cep;
-
-        const data = await controller.getAddress(cep); 
-
-        res.status(200).send(data)
+    app.post('/cep', async (req, res) => {
+        let cep = controller.validaCep(req.body.cep); 
+    
+        if (cep) {
+            let data; 
+    
+            do {
+                data = await controller.getAddress(cep); 
+    
+                if ( data == false ) {
+                    cep = controller.removeLast(cep);
+                }
+    
+            } while (!data);          
+    
+            res.status(200).json(data);
+        } 
+        else res.status(400).json({ error: "CEP Inválido"}) 
     });
 }
