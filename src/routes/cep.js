@@ -3,20 +3,23 @@ module.exports = (app) => {
     app.post('/cep', async (req, res) => {
         let cep = controller.validaCep(req.body.cep); 
     
-        if (cep) {
-            let data; 
+        try {
+            if (cep) {
+                let data; 
+        
+                do {
+                    data = await controller.getAddress(cep); 
+        
+                    if ( data == false ) {
+                        cep = controller.removeLast(cep);
+                    }
+        
+                } while (!data);          
+        
+                res.status(200).json(data);
+            } 
+            else res.status(400).json({ error: "CEP Inválido"}) 
     
-            do {
-                data = await controller.getAddress(cep); 
-    
-                if ( data == false ) {
-                    cep = controller.removeLast(cep);
-                }
-    
-            } while (!data);          
-    
-            res.status(200).json(data);
-        } 
-        else res.status(400).json({ error: "CEP Inválido"}) 
+        } catch { res.status(400).json({ error: "CEP Inválido"}) }
     });
 }
