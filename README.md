@@ -11,6 +11,8 @@ O CEP é convertido para string e validado se possui 8 caracteres. Caracteres es
 
 3. Após terminar a troca de todos caracteres e não houver sucesso na requisição retorna-se 'CEP Inválido'. 
 
+4. Foi criado um token simulação, que podera ser acessado na rota auth/. Você precisa dele para acessar a funcionalidade de CEP. O intuito é somente mostrar uma visão de autorização, por isso descartei utilizar mecanismos para gerar o token (como passport), para deixar o código mais simples.
+
 ## Pré-Requisitos
 * node 10.12.0
 * npm 6.4.1

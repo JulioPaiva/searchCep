@@ -21,7 +21,7 @@ function prepCep(data) {
 }
 
 function validaCep(data) {
-    let cep = String(data).replace("-", "");
+    let cep = String(data).replace("-", "").replace(".", "");
 
     if (parseInt(cep) && cep.length === 8) { 
         return cep;

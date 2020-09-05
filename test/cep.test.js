@@ -37,7 +37,7 @@ test('Deve validar Cep', async () => {
 
     let res = await services.prepCep(cep);
 
-    expect(res).toBe(14403)
+    expect(res).toBe(14403);
 }); 
 
 test('Deve remover o último caracter', () => {
@@ -45,6 +45,12 @@ test('Deve remover o último caracter', () => {
 
     let res = services.removeLast(cep);
 
-    expect(res).toBe('1440333')
-    
+    expect(res).toBe('1440333');    
+});
+
+test('Não deve acessar uma rota protegida sem token', () => {
+   return supertest(app).get('/cep')
+    .then((res) => {
+        expect(res.status).toBe(401);
+    });
 });

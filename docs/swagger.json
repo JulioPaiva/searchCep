@@ -60,7 +60,7 @@
         "description": "Obtenha rua, bairro, cidade e estado do CEP informado.",
         "operationId": "cep",
         "consumes": [
-          "application/x-www-form-urlencoded"
+          "token"
         ],
         "produces": [
           "application/json"
@@ -70,6 +70,13 @@
             "name": "cep",
             "in": "formData",
             "description": "CEP deve conter 8 caracteres.",
+            "required": true,
+            "type": "string"
+          }, 
+          {
+            "name": "token",
+            "in": "header",
+            "description": "Deve se colocar o token recebido da rota /auth no header.",
             "required": true,
             "type": "string"
           }
@@ -94,22 +101,24 @@
           }
         ]
       }
-    }
-  },
-  "securityDefinitions": {
-    "auth": {
-      "type": "oauth2",
-      "authorizationUrl": "http://localhost:3000",
-      "flow": "implicit",
-      "scopes": {
-        "write:pets": "modify pets in your account",
-        "read:pets": "read your pets"
-      }
     },
-    "api_key": {
-      "type": "apiKey",
-      "name": "api_key",
-      "in": "header"
+    "/auth": {
+      "get": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Obtenha um token.",
+        "description": "Recebaum token de autorização.",
+        "operationId": "auth",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Operação realizada com sucesso"
+          }
+        }
+      }
     }
   },
   "definitions": {
