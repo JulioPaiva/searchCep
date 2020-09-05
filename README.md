@@ -38,6 +38,7 @@ O projeto está separado em módulos:
 * body-parser 1.19.0
 * consign 0.1.6
 * express 4.17.1
+* swagger-ui-express 4.1.4
 
 ## Instalação
 * npm i
