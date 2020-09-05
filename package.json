@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --coverage",
     "lint": "eslint src/** test/** --fix",
-    "start": "nodemon ./src/server.js",
+    "start": "node ./src/server.js",
     "secure-mode": "jest --watch"
   },
   "author": "Júlio Paiva [juliopaiva.ti@gmail.com]",

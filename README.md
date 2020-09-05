@@ -46,3 +46,6 @@ O projeto está separado em módulos:
 * Acesse http://localhost:3000
 
 ## O que ocorre nesse processo do protocolo HTTP entre o Client e o Server?
+Quando um cliente digita um link no navegador e preciona enter, é feita uma requisição para um servidor de DNS. Este é responsável por encontrar o IP referente ao link. Por exemplo, quando o cliente digita www.netshoes.com.br o servidor DNS relaciona o link ao IP 201.48.47.74, este é o IP do servidor onde a aplicação está hospedada. O servidor recenbendo está requisição prepara uma resposta, com o conteúdo da página (html, css, corpo da resposta), e envia para o cliente. O Browser do cliente recebe está resposta e monta a página.
+
+O HTTP é um protocolo de transferência de Hiper Texto. 

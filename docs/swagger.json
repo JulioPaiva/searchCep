@@ -1,83 +1,125 @@
 {
-    "swagger": "2.0",
-    "info": {
-      "description": "Serviço de busca de CEP",
-      "version": "1.0.0",
-      "title": "SearchCep",
-      "termsOfService": "",
-      "contact": {
-        "email": "juliopaiva.ti@gmail.com"
-      },
-      "license": {
-        "name": "MIT",
-        "url": "https://opensource.org/licenses/MIT"
+  "swagger": "2.0",
+  "info": {
+    "description": "Este é um simples serviço de busca de CEP",
+    "version": "1.0.0",
+    "title": "SearchCep",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "juliopaiva.ti@gmail.com"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://pt.wikipedia.org/wiki/Licen%C3%A7a_MIT"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/v1",
+  "tags": [
+    {
+      "name": "SearchCEP",
+      "description": "Automatize seus cadastros."
+    },
+    {
+      "name": "ping",
+      "description": "Rota para pingar o serviço",
+      "externalDocs": {
+        "description": "",
+        "url": "http://swagger.io"
+      }
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "tags": [
+          "ping"
+        ],
+        "summary": "Obtenha uma resposta do serviço.",
+        "description": " Receba data e hora atual.",
+        "operationId": "ping",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "operação realizada com sucesso"
+          }
+        }
       }
     },
-    "host": "localhost:3000",
-    "basePath": "/",
-    "schemes": [
-      "http"
-    ],
-    "paths": {
-      "/": {
-        "get": {
-          "tags": [ "ping" ],
-          "summary": "Ping",
-          "description": "Retorna a data e hora atual.",
-          "produces": [
-            "application/json"
-          ],          
-          "responses": {
-            "200": {
-              "description": "successful operation",
-              "schema": {
-                "$ref": "#/definitions/ApiResponse"
-              }
-            }
+    "/cep": {
+      "post": {
+        "tags": [
+          "cep"
+        ],
+        "summary": "Consulte um CEP e obtenha o endereço. ",
+        "description": "Obtenha rua, bairro, cidade e estado do CEP informado.",
+        "operationId": "cep",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "cep",
+            "in": "formData",
+            "description": "CEP deve conter 8 caracteres. Caracteres especiais são opcionais.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Cep inválido"
           },
-          "security": [
-            {
-              "petstore_auth": [
-                "write:pets",
-                "read:pets"
-              ]
-            }
-          ]
-        }
-      },
-      "/cep": {
-        "post": {
-          "tags": [
-            "cep"
-          ],
-          "summary": "Busca o endereço",
-          "description": "",
-          "operationId": "searchCep",
-          "consumes": [
-            "application/json"
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "parameters": [
-            {
-              "cep": "string"
-            }
-          ],
-          "responses": {
-            "405": {
-              "description": "Invalid input"
-            }
+          "400": {
+            "description": "Cep inválido"
           },
-          "security": [
-            {
-              "petstore_auth": [
-                "write:cep",
-                "read:cep"
-              ]
-            }
-          ]
+          "405": {
+            "description": "Parametro inválido"
+          }
+        },
+        "security": [
+          {
+            "auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "auth": {
+      "type": "oauth2",
+      "authorizationUrl": "http://localhost:3000",
+      "flow": "implicit",
+      "scopes": {
+        "write:pets": "modify pets in your account",
+        "read:pets": "read your pets"
+      }
+    },
+    "api_key": {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "Search": {
+      "type": "object",
+      "properties": {
+        "cep": {
+          "type": "string"
         }
       }
     }
   }
+}
